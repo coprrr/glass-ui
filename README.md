@@ -19,12 +19,6 @@ Check **Enable Glass UI** to use the theme. **Apply** saves and updates the curr
 
 When switching from a manually installed copy to AnkiWeb, disable the manual copy first to avoid running two copies.
 
-## Scope and compatibility
-
-Designed for Anki desktop using Qt 6. Windows screenshots were used during development; a tested Anki version and cross-platform compatibility matrix have not yet been established. Automated configuration, styling-scope and apply/disable checks pass; these do not replace testing inside Anki.
-
-Glass UI styles the deck list, the standard deck overview and common buttons. It does not supply wallpaper, replace card templates, theme native Anki dialogs, or style the separate congratulations page. Background and calendar add-ons remain independently managed. Calendar contents and controls are not rewritten; their own styles may override inherited text colours.
-
 ## Performance
 
 No background polling, DOM observers or animated blur. Apply replaces the add-on's style blocks without rebuilding the study page. For lower graphics cost, set blur to **0px**. Performance depends on your hardware, wallpaper and other add-ons.
