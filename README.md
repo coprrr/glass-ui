@@ -35,7 +35,7 @@ After installing an update, restart Anki once. If settings appear ineffective, c
 
 ## Development
 
-Add-on files are under `glass_ui/` in the source repository. Run `python -B check_glass.py` for checks and `python build_release.py` to create the installable archive. The archive contains the contents of `glass_ui/` at its root.
+This repository intentionally keeps all source files in one folder, including glass.css and overview.css. Run `python -B check_glass.py` for checks and `python build_release.py` to create the installable archive. The build script packages the required files and places stylesheets in web/ automatically.
 
 ## License
 

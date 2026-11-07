@@ -8,8 +8,9 @@ from types import SimpleNamespace
 from aqt import gui_hooks, mw
 
 _ROOT = Path(__file__).resolve().parent
-_CSS = (_ROOT / 'web' / 'glass.css').read_text(encoding='utf-8')
-_OVERVIEW_CSS = (_ROOT / 'web' / 'overview.css').read_text(encoding='utf-8')
+_WEB = _ROOT / 'web' if (_ROOT / 'web').is_dir() else _ROOT
+_CSS = (_WEB / 'glass.css').read_text(encoding='utf-8')
+_OVERVIEW_CSS = (_WEB / 'overview.css').read_text(encoding='utf-8')
 _DEFAULTS = {
     'appearance': 'dark',
     'enabled': True,

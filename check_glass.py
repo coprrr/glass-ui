@@ -6,6 +6,8 @@ import sys
 from types import ModuleType, SimpleNamespace
 
 root = Path(__file__).parent / 'glass_ui'
+if not root.is_dir():
+    root = Path(__file__).parent
 config = json.loads((root / 'config.json').read_text())
 actions = {}
 aqt = ModuleType('aqt')
