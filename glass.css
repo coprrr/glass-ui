@@ -1,0 +1,127 @@
+/* Glass UI 0.3: readable, configurable, wallpaper-neutral interface. */
+body {
+  font-family: var(--gui-font) !important;
+  color: var(--gui-text);
+}
+
+/* Only style deck tables. Avoid generic center > table: it also matches
+   button bars and can create an unwanted large panel at the bottom. */
+body center > table:has(tr.deck),
+body center > table:has(.decktd) {
+  width: min(calc(100% - 24px), var(--gui-max-width)) !important;
+  max-width: var(--gui-max-width) !important;
+  border-collapse: separate !important;
+  border-spacing: 0 1px !important;
+  padding: 12px 17px !important;
+  background: var(--gui-panel-bg) !important;
+  border: 1px solid var(--gui-accent) !important;
+  border-radius: var(--gui-radius) !important;
+  box-shadow: 0 7px 24px rgba(8,3,25,.23) !important;
+  -webkit-backdrop-filter: blur(var(--gui-blur));
+  backdrop-filter: blur(var(--gui-blur));
+  color: var(--gui-text) !important;
+  font-size: var(--gui-font-size) !important;
+}
+body center > table:has(tr.deck) tr.deck td,
+body center > table:has(.decktd) tr.deck td {
+  padding: var(--gui-row-padding) 9px !important;
+  font-size: inherit !important;
+  line-height: 1.33 !important;
+  border-bottom: 1px solid rgba(255,255,255,.065) !important;
+  height: auto !important;
+}
+body center > table:has(tr.deck) th,
+body center > table:has(.decktd) th {
+  padding: 6px 7px !important;
+  font-size: inherit !important;
+  line-height: 1.25 !important;
+  color: var(--gui-text) !important;
+  border-bottom: 1px solid rgba(255,255,255,.24) !important;
+}
+body center > table:has(tr.deck) tr.deck:hover td,
+body center > table:has(.decktd) tr.deck:hover td {
+  background: rgba(220,197,255,.19) !important;
+}
+body center > table:has(tr.deck) tr.deck:hover td:first-child,
+body center > table:has(.decktd) tr.deck:hover td:first-child {
+  border-radius: 9px 0 0 9px;
+}
+body center > table:has(tr.deck) tr.deck:hover td:last-child,
+body center > table:has(.decktd) tr.deck:hover td:last-child {
+  border-radius: 0 9px 9px 0;
+}
+body center > table:has(tr.deck) a.deck,
+body center > table:has(.decktd) a.deck,
+body center > table:has(tr.deck) .collapse,
+body center > table:has(.decktd) .collapse {
+  color: var(--gui-text) !important;
+  text-decoration: none !important;
+  font-size: inherit !important;
+}
+body center > table:has(tr.deck) a.deck:hover,
+body center > table:has(.decktd) a.deck:hover {
+  color: var(--gui-text) !important;
+  text-decoration: underline !important;
+}
+body center > table:has(tr.deck) .decktd,
+body center > table:has(.decktd) .decktd {
+  min-width: 0 !important;
+}
+body center > table:has(tr.deck) td.count,
+body center > table:has(.decktd) td.count {
+  font-variant-numeric: tabular-nums;
+}
+/* Deliberately leave leaderboard HTML untouched. */
+#studiedToday {
+  display: inline-block;
+  margin: 9px auto 12px !important;
+  padding: 6px 14px !important;
+  color: var(--gui-text);
+  border-radius: 999px;
+  border: 1px solid rgba(255,255,255,.20);
+  background: var(--gui-panel-bg);
+  -webkit-backdrop-filter: blur(var(--gui-blur));
+  backdrop-filter: blur(var(--gui-blur));
+  font-size: max(12px, calc(var(--gui-font-size) - 2px)) !important;
+}
+/* Only make buttons more polished; do not wrap their parent table. */
+button, input[type=button], input[type=submit], .btn {
+  font-family: var(--gui-font) !important;
+  font-size: max(12px, calc(var(--gui-font-size) - 1px)) !important;
+  border-radius: 999px !important;
+  transition: background .15s ease, border-color .15s ease;
+}
+button:hover, input[type=button]:hover, .btn:hover {
+  border-color: var(--gui-accent) !important;
+}
+
+/* Keep the panel within smaller windows; let long deck names wrap. */
+@media (max-width: 600px) {
+  body center > table:has(tr.deck),
+  body center > table:has(.decktd) {
+    padding: 8px !important;
+  }
+  body center > table:has(tr.deck) .decktd,
+  body center > table:has(.decktd) .decktd {
+    white-space: normal !important;
+    overflow-wrap: anywhere;
+  }
+}
+
+/* Own both sides of the highlighted row's contrast, independent of Anki's
+   light/dark selection background. Limit this to the main deck table. */
+body center > table:has(tr.deck) tr.deck:is(.current, :hover, :focus-within),
+body center > table:has(tr.deck) tr.deck:is(.current, :hover, :focus-within) > td {
+  background: var(--gui-highlight) !important;
+}
+body center > table:has(tr.deck) tr.deck:is(.current, :hover, :focus-within) .decktd,
+body center > table:has(tr.deck) tr.deck:is(.current, :hover, :focus-within) a.deck,
+body center > table:has(tr.deck) tr.deck:is(.current, :hover, :focus-within) .collapse {
+  color: var(--gui-highlight-text) !important;
+}
+body center > table:has(tr.deck) tr.deck:is(.current, :hover, :focus-within) > td:first-child {
+  border-radius: 9px 0 0 9px;
+}
+body center > table:has(tr.deck) tr.deck:is(.current, :hover, :focus-within) > td:last-child {
+  border-radius: 0 9px 9px 0;
+}

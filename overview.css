@@ -1,0 +1,65 @@
+/* Overview only. Style existing elements; preserve handlers, focus, and add-ons. */
+body center:has(> h3) {
+  box-sizing: border-box;
+  width: min(calc(100% - 24px), var(--gui-overview-width));
+  margin: 20px auto;
+  padding: var(--gui-overview-padding);
+  overflow-x: auto;
+  background: var(--gui-panel-bg) !important;
+  color: var(--gui-text) !important;
+  border: 1px solid var(--gui-accent);
+  border-radius: var(--gui-radius);
+  box-shadow: 0 7px 24px rgba(8,3,25,.23);
+  backdrop-filter: blur(var(--gui-blur));
+  font-size: var(--gui-font-size);
+}
+body center:has(> h3) > h3 {
+  color: var(--gui-text) !important;
+  font-size: calc(var(--gui-font-size) * 1.35) !important;
+  line-height: 1.35;
+  margin: 0 0 var(--gui-overview-padding);
+  overflow-wrap: anywhere;
+}
+body center:has(> h3) > table:has(#study) {
+  width: min(100%, 520px) !important;
+  color: var(--gui-text) !important;
+  font-size: var(--gui-font-size) !important;
+  margin: calc(var(--gui-overview-padding) / 2) auto;
+}
+body center:has(> h3) > table:has(#study) td {
+  font-size: inherit;
+  padding: var(--gui-row-padding) 8px;
+}
+body center:has(> h3) .description,
+body center:has(> h3) > .smallLink {
+  color: var(--gui-text) !important;
+  font-size: inherit;
+  line-height: 1.5;
+  max-width: 100%;
+  overflow-wrap: anywhere;
+}
+body #study {
+  background: var(--gui-highlight) !important;
+  color: var(--gui-highlight-text) !important;
+  border: 1px solid var(--gui-accent) !important;
+  border-radius: var(--gui-radius) !important;
+  box-sizing: border-box;
+  padding: var(--gui-study-padding) calc(var(--gui-study-padding) * 2) !important;
+  font-size: var(--gui-font-size) !important;
+  font-weight: 600;
+  height: auto !important;
+  min-height: 32px !important;
+  line-height: 1.25 !important;
+  cursor: pointer;
+}
+body #study:focus-visible {
+  outline: 2px solid var(--gui-text);
+  outline-offset: 3px;
+}
+@media (max-width: 480px) {
+  body center:has(> h3) > table:has(#study) > tbody > tr > td {
+    display: block;
+    width: auto;
+  }
+}
+/* No animated blur, polling, layout reconstruction, or per-cell calendar effects. */
